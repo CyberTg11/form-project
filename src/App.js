@@ -1,23 +1,26 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Form from './Components/Form';
 
 function App() {
+  const [messageSent, setMessageSent] = useState(false);
+
+  const myForm = (e) => {
+    e.preventDefault();
+    setMessageSent(true);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='page'>
+    <div className='formDiv'>
+      <h2>Şərh formu </h2>
+      <form onSubmit={myForm}>
+        <Form />
+        <br />
+        <button>Göndər</button>
+      </form>
+      {messageSent && <p>Mesaj müvəffəqiyyətlə göndərildi!</p>}
+    </div>
     </div>
   );
 }
